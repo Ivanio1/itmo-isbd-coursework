@@ -1,44 +1,22 @@
-drop table if exists offerpurchase cascade;
-
-drop table if exists offertool cascade;
-
-drop table if exists tool cascade;
-
-drop table if exists offerdetail cascade;
-
-drop table if exists detailproviderdetail cascade;
-
-drop table if exists detail cascade;
-
-drop table if exists detailprovider cascade;
-
-drop table if exists worker cascade;
-
-drop table if exists reviewoffer cascade;
-
-drop table if exists offer cascade;
-
-drop table if exists review cascade;
-
-drop table if exists carclient cascade;
-
-drop table if exists client cascade;
-
-drop table if exists car cascade;
-
-drop table if exists administratorpurchase cascade;
-
-drop table if exists purchase cascade;
-
-drop table if exists administrator cascade;
-
-drop table if exists manufacturer cascade;
-
-drop table if exists callcenterworker cascade;
-
-drop table if exists employeesto cascade;
-
-drop table if exists employee cascade;
-
-drop table if exists sto cascade;
-
+DROP TABLE IF EXISTS offerpurchase CASCADE;
+DROP TABLE IF EXISTS offertool CASCADE;
+DROP TABLE IF EXISTS tool CASCADE;
+DROP TABLE IF EXISTS offerdetail CASCADE;
+DROP TABLE IF EXISTS detailproviderdetail CASCADE;
+DROP TABLE IF EXISTS detail CASCADE;
+DROP TABLE IF EXISTS detailprovider CASCADE;
+DROP TABLE IF EXISTS worker CASCADE;
+DROP TABLE IF EXISTS reviewoffer CASCADE;
+DROP TABLE IF EXISTS offer CASCADE;
+DROP TABLE IF EXISTS review CASCADE;
+DROP TABLE IF EXISTS carclient CASCADE;
+DROP TABLE IF EXISTS client CASCADE;
+DROP TABLE IF EXISTS car CASCADE;
+DROP TABLE IF EXISTS administratorpurchase CASCADE;
+DROP TABLE IF EXISTS purchase CASCADE;
+DROP TABLE IF EXISTS administrator CASCADE;
+DROP TABLE IF EXISTS manufacturer CASCADE;
+DROP TABLE IF EXISTS callcenterworker CASCADE;
+DROP TABLE IF EXISTS employeesto CASCADE;
+DROP TABLE IF EXISTS employee CASCADE;
+DROP TABLE IF EXISTS sto CASCADE;

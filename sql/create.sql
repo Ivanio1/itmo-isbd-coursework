@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS Car
     id            SERIAL PRIMARY KEY,
     brand         VARCHAR(255) NOT NULL,
     model         VARCHAR(255) NOT NULL,
-    creation_year DATE         NOT NULL
+    creation_date DATE         NOT NULL
 );
 CREATE TABLE IF NOT EXISTS Employee
 (
