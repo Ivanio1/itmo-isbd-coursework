@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS Worker
     employeeId     INTEGER      NOT NULL,
     CONSTRAINT employeeId_fk FOREIGN KEY (employeeId) REFERENCES Employee (id) ON DELETE CASCADE,
     CONSTRAINT employeeId PRIMARY KEY (
-                                            employeeId
+                                       employeeId
         ),
     specialization VARCHAR(255) NOT NULL
 );
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS Purchase
     workerId  INTEGER REFERENCES Worker (employeeId) ON DELETE CASCADE NOT NULL,
     state     VARCHAR(255)                                             NOT NULL,
     createdAt DATE                                                     NOT NULL,
-    closedAt  DATE                                                     NOT NULL
+    closedAt  DATE
 );
 
 CREATE TABLE IF NOT EXISTS OfferPurchase
@@ -152,12 +152,12 @@ CREATE TABLE IF NOT EXISTS CarClient
 
 CREATE TABLE IF NOT EXISTS Administrator
 (
-    employeeId     INTEGER      NOT NULL,
+    employeeId INTEGER      NOT NULL,
     CONSTRAINT employee2Id_fk FOREIGN KEY (employeeId) REFERENCES Employee (id) ON DELETE CASCADE,
     CONSTRAINT employee2Id PRIMARY KEY (
-                                       employeeId
+                                        employeeId
         ),
-    roles      VARCHAR(255)                                       NOT NULL
+    roles      VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS AdministratorPurchase
