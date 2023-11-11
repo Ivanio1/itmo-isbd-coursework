@@ -15,3 +15,5 @@ DROP INDEX IF EXISTS tool_name;
 DROP INDEX IF EXISTS client_email;
 
 DROP INDEX IF EXISTS client_phone;
+
+DROP INDEX IF EXISTS car_id;

@@ -15,3 +15,5 @@ CREATE INDEX IF NOT EXISTS tool_name ON tool USING HASH(name);
 CREATE INDEX IF NOT EXISTS client_email ON client USING HASH(email);
 
 CREATE INDEX IF NOT EXISTS client_phone ON client USING HASH(phone);
+
+CREATE INDEX IF NOT EXISTS car_id ON car USING HASH(id);
