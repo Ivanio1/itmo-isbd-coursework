@@ -8,9 +8,9 @@ DROP INDEX IF EXISTS offer_name;
 
 DROP INDEX IF EXISTS sto_name;
 
-DROP INDEX IF EXISTS detail_num;
+DROP INDEX IF EXISTS detail_name;
 
-DROP INDEX IF EXISTS tool_num;
+DROP INDEX IF EXISTS tool_name;
 
 DROP INDEX IF EXISTS client_email;
 

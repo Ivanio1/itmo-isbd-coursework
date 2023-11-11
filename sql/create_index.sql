@@ -8,9 +8,9 @@ CREATE INDEX IF NOT EXISTS offer_name on offer USING HASH(name);
 
 CREATE INDEX IF NOT EXISTS sto_name ON sto USING HASH(name);
 
-CREATE INDEX IF NOT EXISTS detail_num ON detail USING HASH(stock);
+CREATE INDEX IF NOT EXISTS detail_name ON detail USING HASH(name);
 
-CREATE INDEX IF NOT EXISTS tool_num ON tool USING HASH(stock);
+CREATE INDEX IF NOT EXISTS tool_name ON tool USING HASH(name);
 
 CREATE INDEX IF NOT EXISTS client_email ON client USING HASH(email);
 
