@@ -1,0 +1,17 @@
+CREATE INDEX IF NOT EXISTS purchase_id ON purchase USING HASH(id);
+
+CREATE INDEX IF NOT EXISTS purchase_status ON purchase USING HASH(state);
+
+CREATE INDEX IF NOT EXISTS purchase_createdat ON purchase USING BTREE(createdat);
+
+CREATE INDEX IF NOT EXISTS offer_name on offer USING HASH(name);
+
+CREATE INDEX IF NOT EXISTS sto_name ON sto USING HASH(name);
+
+CREATE INDEX IF NOT EXISTS detail_num ON detail USING HASH(stock);
+
+CREATE INDEX IF NOT EXISTS tool_num ON tool USING HASH(stock);
+
+CREATE INDEX IF NOT EXISTS client_email ON client USING HASH(email);
+
+CREATE INDEX IF NOT EXISTS client_phone ON client USING HASH(phone);
