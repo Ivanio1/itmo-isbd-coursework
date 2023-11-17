@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS Offer
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    price       INTEGER      NOT NULL
+    price       INTEGER      NOT NULL,
+    CHECK ( price > 0 )
 );
 
 CREATE TABLE IF NOT EXISTS OfferTool
@@ -29,7 +30,8 @@ CREATE TABLE IF NOT EXISTS Detail
     id    SERIAL PRIMARY KEY,
     name  VARCHAR(255) NOT NULL,
     stock INTEGER      NOT NULL,
-    price INTEGER      NOT NULL
+    price INTEGER      NOT NULL,
+    CHECK ( price > 0 )
 );
 
 CREATE TABLE IF NOT EXISTS OfferDetail
@@ -67,7 +69,10 @@ CREATE TABLE IF NOT EXISTS Client
     name    VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     phone   VARCHAR(255) NOT NULL,
-    email   VARCHAR(255) NOT NULL
+    CHECK (phone ~ '^\+[7]{1}[0-9]{10}$'),
+    email   VARCHAR(255) NOT NULL,
+    CHECK ( email ~ '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$' )
+
 );
 
 CREATE TABLE IF NOT EXISTS Car
@@ -82,8 +87,11 @@ CREATE TABLE IF NOT EXISTS Employee
     id      SERIAL PRIMARY KEY,
     name    VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
-    snils   VARCHAR(255) NOT NULL
+    snils   VARCHAR(255) NOT NULL,
+    CHECK (snils ~ '^\d{3}-\d{3}-\d{3} \d{2}$')
 );
+
+
 
 CREATE TABLE IF NOT EXISTS Worker
 (
@@ -102,6 +110,7 @@ CREATE TABLE IF NOT EXISTS Purchase
     carId     INTEGER REFERENCES Car (id) ON DELETE CASCADE            NOT NULL,
     workerId  INTEGER REFERENCES Worker (employeeId) ON DELETE CASCADE NOT NULL,
     state     VARCHAR(255)                                             NOT NULL,
+    CHECK ( state like 'Выполнен' or state like 'В процессе' or state like 'Ожидает выполнения' ),
     createdAt DATE                                                     NOT NULL,
     closedAt  DATE
 );
@@ -188,7 +197,8 @@ CREATE TABLE IF NOT EXISTS STO
 (
     id    SERIAL PRIMARY KEY,
     name  VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) NOT NULL
+    phone VARCHAR(255) NOT NULL,
+    CHECK (phone ~ '^\+[7]{1}[0-9]{10}$')
 );
 
 CREATE TABLE IF NOT EXISTS EmployeeSTO
