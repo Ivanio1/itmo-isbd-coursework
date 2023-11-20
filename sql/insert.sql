@@ -268,17 +268,17 @@ VALUES (1, 3),
        (10, 8)
 ON CONFLICT DO NOTHING;
 
-INSERT INTO Administrator (employeeid, roles)
-VALUES (1, 'продвинутый'),
-       (2, 'базовый'),
-       (3, 'продвинутый'),
-       (4, 'базовый'),
-       (5, 'полный доступ'),
-       (6, 'базовый'),
-       (7, 'полный доступ'),
-       (8, 'продвинутый'),
-       (9, 'базовый'),
-       (10, 'продвинутый') ON CONFLICT DO NOTHING;
+INSERT INTO Administrator (employeeid)
+VALUES (1),
+       (2),
+       (3),
+       (4),
+       (5),
+       (6),
+       (7),
+       (8),
+       (9),
+       (10) ON CONFLICT DO NOTHING;
 
 INSERT INTO AdministratorPurchase (administratorid, purchaseid)
 VALUES (1, 1),

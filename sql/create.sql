@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS Purchase
     carId     INTEGER REFERENCES Car (id) ON DELETE CASCADE            NOT NULL,
     workerId  INTEGER REFERENCES Worker (employeeId) ON DELETE CASCADE NOT NULL,
     state     VARCHAR(255)                                             NOT NULL,
-    CHECK ( state like 'Выполнен' or state like 'В процессе' or state like 'Ожидает выполнения' ),
+    CHECK ( state like '        ' or state like '          ' or state like '                  ' ),
     createdAt DATE                                                     NOT NULL,
     closedAt  DATE
 );
@@ -166,7 +166,6 @@ CREATE TABLE IF NOT EXISTS Administrator
     CONSTRAINT employee2Id PRIMARY KEY (
                                         employeeId
         ),
-    roles      VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS AdministratorPurchase
