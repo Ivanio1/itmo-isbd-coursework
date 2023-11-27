@@ -1,4 +1,4 @@
---Создать заказ
+--Г‘Г®Г§Г¤Г ГІГј Г§Г ГЄГ Г§
 CREATE OR REPLACE FUNCTION create_purchase(clientid INTEGER, carid INTEGER, workerid INTEGER)
     RETURNS INTEGER AS
 $$
@@ -7,7 +7,7 @@ DECLARE
 BEGIN
     WITH purchase_id as (
         INSERT INTO Purchase(clientid, carid, workerid, state, createdat)
-            values(clientid, carid, workerid, 'Новый заказ', current_date)
+            values(clientid, carid, workerid, 'ГЌГ®ГўГ»Г© Г§Г ГЄГ Г§', current_date)
             RETURNING id
     )
     SELECT * INTO purchase_id FROM purchase_id;
@@ -16,41 +16,41 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Ставит статус заказа выполнен и дату закрытия
+--Г‘ГІГ ГўГЁГІ Г±ГІГ ГІГіГ± Г§Г ГЄГ Г§Г  ГўГ»ГЇГ®Г«Г­ГҐГ­ ГЁ Г¤Г ГІГі Г§Г ГЄГ°Г»ГІГЁГї
 CREATE OR REPLACE FUNCTION update_purchase_status_to_done(purchase_id INTEGER)
     RETURNS VOID AS
 $$
 BEGIN
     UPDATE Purchase
-    SET state    = 'Выполнен'
+    SET state    = 'Г‚Г»ГЇГ®Г«Г­ГҐГ­'
     WHERE id = purchase_id;
 END;
 $$ LANGUAGE plpgsql;
 
---Ставит статус заказа на ожидание
+--Г‘ГІГ ГўГЁГІ Г±ГІГ ГІГіГ± Г§Г ГЄГ Г§Г  Г­Г  Г®Г¦ГЁГ¤Г Г­ГЁГҐ
 CREATE OR REPLACE FUNCTION update_purchase_status_to_waiting(purchase_id INTEGER)
     RETURNS VOID AS
 $$
 BEGIN
     UPDATE Purchase
-    SET state    = 'Ожидает выполнения'
+    SET state    = 'ГЋГ¦ГЁГ¤Г ГҐГІ ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГї'
     WHERE id = purchase_id;
 END;
 $$ LANGUAGE plpgsql;
 
---Ставит статус заказа в процессе
+--Г‘ГІГ ГўГЁГІ Г±ГІГ ГІГіГ± Г§Г ГЄГ Г§Г  Гў ГЇГ°Г®Г¶ГҐГ±Г±ГҐ
 CREATE OR REPLACE FUNCTION update_purchase_status_to_in_process(purchase_id INTEGER)
     RETURNS VOID AS
 $$
 BEGIN
     UPDATE Purchase
-    SET state    = 'В процессе'
+    SET state    = 'Г‚ ГЇГ°Г®Г¶ГҐГ±Г±ГҐ'
     WHERE id = purchase_id;
 END;
 $$ LANGUAGE plpgsql;
 
 
---Возвращает имеющиеся инструменты
+--Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ ГЁГ¬ГҐГѕГ№ГЁГҐГ±Гї ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ»
 CREATE OR REPLACE FUNCTION get_available_tools()
     RETURNS TABLE (
                       tool_id    INTEGER,
@@ -65,7 +65,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Возвращает инструменты, которые закончились (/сломались)
+--Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІГ», ГЄГ®ГІГ®Г°Г»ГҐ Г§Г ГЄГ®Г­Г·ГЁГ«ГЁГ±Гј (/Г±Г«Г®Г¬Г Г«ГЁГ±Гј)
 CREATE OR REPLACE FUNCTION get_zero_tools()
     RETURNS TABLE (
                       tool_id    INTEGER,
@@ -80,7 +80,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Пополнить инструмент
+--ГЏГ®ГЇГ®Г«Г­ГЁГІГј ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІ
 CREATE OR REPLACE FUNCTION fill_tool_count(tool_id INTEGER, number INTEGER)
     RETURNS VOID AS
 $$
@@ -91,7 +91,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Пополнить инструмент по названию
+--ГЏГ®ГЇГ®Г«Г­ГЁГІГј ГЁГ­Г±ГІГ°ГіГ¬ГҐГ­ГІ ГЇГ® Г­Г Г§ГўГ Г­ГЁГѕ
 CREATE OR REPLACE FUNCTION fill_tool_count_by_name(tool_name varchar(255), number INTEGER)
     RETURNS VOID AS
 $$
@@ -109,8 +109,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Проверить, есть ли у нас нужное количество делалей
-CREATE OR REPLACE FUNCTION is_stock_of_details_greater(detail_id INTEGER, number INTEGER)
+--ГЏГ°Г®ГўГҐГ°ГЁГІГј, ГҐГ±ГІГј Г«ГЁ Гі Г­Г Г± Г­ГіГ¦Г­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤ГҐГ«Г Г«ГҐГ©
+CREATE OR REPLACE FUNCTION is_stock_of_detail_greater(detail_id INTEGER, number INTEGER)
     RETURNS BOOLEAN AS
 $$
 DECLARE
@@ -130,8 +130,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Проверить, есть ли у нас нужное количество делалей
-CREATE OR REPLACE FUNCTION is_stock_of_details_greater_by_name(detail_name varchar(255), number INTEGER)
+--ГЏГ°Г®ГўГҐГ°ГЁГІГј, ГҐГ±ГІГј Г«ГЁ Гі Г­Г Г± Г­ГіГ¦Г­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤ГҐГ«Г Г«ГҐГ©
+CREATE OR REPLACE FUNCTION is_stock_of_detail_greater_by_name(detail_name varchar(255), number INTEGER)
     RETURNS BOOLEAN AS
 $$
 DECLARE
@@ -151,18 +151,19 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Пополнить детали
-CREATE OR REPLACE FUNCTION fill_detail_count(detail_id INTEGER, number INTEGER)
-    RETURNS VOID AS
-$$
+
+CREATE OR REPLACE procedure fill_detail_count(detail_id bigint, number INTEGER)
+as $$
 BEGIN
     UPDATE Detail
-    SET stock = stock + number
+    SET storagestock = storagestock + number,
+        stock        = stock - number
     WHERE id = detail_id;
 END;
 $$ LANGUAGE plpgsql;
 
---Пополнить детали по названию
+
+--ГЏГ®ГЇГ®Г«Г­ГЁГІГј Г¤ГҐГІГ Г«ГЁ ГЇГ® Г­Г Г§ГўГ Г­ГЁГѕ
 CREATE OR REPLACE FUNCTION fill_detail_count_by_name(detail_name varchar(255), number INTEGER)
     RETURNS VOID AS
 $$
@@ -175,7 +176,7 @@ BEGIN
     WHERE detail.name = detail_name;
 
     UPDATE Detail
-    SET stock = stock + number
+    SET storagestock = storagestock + number
     WHERE id = detail_id;
 END;
 $$ LANGUAGE plpgsql;
