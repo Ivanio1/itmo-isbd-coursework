@@ -141,8 +141,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE procedure fill_detail_count(detail_id bigint, number INTEGER)
-as $$
+CREATE OR REPLACE function fill_detail_count(detail_id bigint, number INTEGER)
+RETURNS VOID as
+$$
 BEGIN
     UPDATE Detail
     SET storagestock = storagestock + number,
