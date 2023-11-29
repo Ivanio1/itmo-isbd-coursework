@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS Purchase
     clientId  INTEGER REFERENCES Client (id) ON DELETE CASCADE         NOT NULL,
     carId     INTEGER REFERENCES Car (id) ON DELETE CASCADE            NOT NULL,
     workerId  INTEGER REFERENCES Worker (employeeId) ON DELETE CASCADE NOT NULL,
+    administratorId  INTEGER REFERENCES Administrator (employeeId) ON DELETE CASCADE NOT NULL,
     state     VARCHAR(255)                                             NOT NULL,
     CHECK ( state like '        ' or state like '          ' or state like '                  ' ),
     createdAt DATE                                                     NOT NULL,
@@ -165,7 +166,7 @@ CREATE TABLE IF NOT EXISTS Administrator
     CONSTRAINT employee2Id_fk FOREIGN KEY (employeeId) REFERENCES Employee (id) ON DELETE CASCADE,
     CONSTRAINT employee2Id PRIMARY KEY (
                                         employeeId
-        ),
+        )
 );
 
 CREATE TABLE IF NOT EXISTS AdministratorPurchase

@@ -280,18 +280,6 @@ VALUES (1),
        (9),
        (10) ON CONFLICT DO NOTHING;
 
-INSERT INTO AdministratorPurchase (administratorid, purchaseid)
-VALUES (1, 1),
-       (2, 2),
-       (3, 3),
-       (4, 6),
-       (5, 5),
-       (6, 4),
-       (7, 8),
-       (8, 9),
-       (9, 10),
-       (10, 7)
-ON CONFLICT DO NOTHING;
 
 INSERT INTO Manufacturer (employeeid, detail_specialization)
 VALUES (21, 'Двигатели'),
