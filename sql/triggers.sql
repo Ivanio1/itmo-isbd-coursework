@@ -64,7 +64,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER update_purchase_closed_at_trigger
-    AFTER UPDATE ON Purchase
+    BEFORE UPDATE ON Purchase
     FOR EACH ROW
 EXECUTE FUNCTION update_purchase_closed_at();
 
