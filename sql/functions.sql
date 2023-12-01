@@ -42,30 +42,32 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION get_available_tools()
     RETURNS TABLE (
-                      tool_id    INTEGER,
-                      tool_name  VARCHAR(255)
+                      id    bigint,
+                      name  VARCHAR(255),
+                      stock INTEGER
                   ) AS
 $$
 BEGIN
     RETURN QUERY
-        SELECT id, name
+        SELECT Tool.id, Tool.name, Tool.stock 
         FROM Tool
-        WHERE stock > 0;
+        WHERE Tool.stock > 0;
 END;
 $$ LANGUAGE plpgsql;
 
 
 CREATE OR REPLACE FUNCTION get_zero_tools()
     RETURNS TABLE (
-                      tool_id    INTEGER,
-                      tool_name  VARCHAR(255)
+                      id    bigint,
+                      name  VARCHAR(255),
+                      stock INTEGER
                   ) AS
 $$
 BEGIN
     RETURN QUERY
-        SELECT id, name
+        SELECT Tool.id, Tool.name, Tool.stock 
         FROM Tool
-        WHERE stock = 0;
+        WHERE Tool.stock = 0;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -85,7 +87,7 @@ CREATE OR REPLACE FUNCTION fill_tool_count_by_name(tool_name varchar(255), numbe
     RETURNS VOID AS
 $$
 DECLARE
-    tool_id INTEGER;
+    tool_id bigint;
 BEGIN
     SELECT tool.id
     INTO tool_id
@@ -157,7 +159,7 @@ CREATE OR REPLACE FUNCTION fill_detail_count_by_name(detail_name varchar(255), n
     RETURNS VOID AS
 $$
 DECLARE
-    detail_id INTEGER;
+    detail_id bigint;
 BEGIN
     SELECT detail.id
     INTO detail_id
