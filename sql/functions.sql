@@ -9,7 +9,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_purchase_status_to_done(purchase_id INTEGER)
+CREATE OR REPLACE FUNCTION update_purchase_status_to_done(purchase_id bigint)
     RETURNS VOID AS
 $$
 BEGIN
@@ -19,7 +19,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_purchase_status_to_waiting(purchase_id INTEGER)
+CREATE OR REPLACE FUNCTION update_purchase_status_to_waiting(purchase_id bigint)
     RETURNS VOID AS
 $$
 BEGIN
@@ -29,7 +29,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_purchase_status_to_in_process(purchase_id INTEGER)
+CREATE OR REPLACE FUNCTION update_purchase_status_to_in_process(purchase_id bigint)
     RETURNS VOID AS
 $$
 BEGIN
@@ -70,7 +70,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION fill_tool_count(tool_id INTEGER, number INTEGER)
+CREATE OR REPLACE FUNCTION fill_tool_count(tool_id bigint, number INTEGER)
     RETURNS VOID AS
 $$
 BEGIN
@@ -99,7 +99,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION is_stock_of_detail_greater(detail_id INTEGER, number INTEGER)
+CREATE OR REPLACE FUNCTION is_stock_of_detail_greater(detail_id bigint, number INTEGER)
     RETURNS BOOLEAN AS
 $$
 DECLARE
